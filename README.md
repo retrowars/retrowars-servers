@@ -21,7 +21,7 @@ Retrowars is a community driven project. We will try to make sure that there are
 
 #### Using the portable executable .jar file
 
-You can download the portable executable .jar file from the retrowars project.
+You can download the portable executable .jar file from the retrowars project, or run it using `./gradlew :server:dist` from that project.
 Once downloaded, run it using: `PORT=80 java -jar server.jar` (choosing whatever port you wish).
 
 Note: Requires Java 8 and will likely not work with later versions due to the way the libgdx library works.
