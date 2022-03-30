@@ -21,8 +21,11 @@ Retrowars is a community driven project. We will try to make sure that there are
 
 #### Using the portable executable .jar file
 
-You can download the portable executable .jar file from the retrowars project, or run it using `./gradlew :server:dist` from that project.
-Once downloaded, run it using: `PORT=80 java -jar server.jar` (choosing whatever port you wish).
+Obtaining a `.jar` file by either:
+* [Downloading the latest version from the release page of retrowars/retrowars](https://github.com/retrowars/retrowars/releases?q=%22server+release%3A%22&expanded=true), or
+* Build your own `.jar` file by cloning [retrowars/retrowars](https://github.com/retrowars/retrowars) then running `./gradlew :server:dist` from the root directory of that repository.
+
+Once you have obtained a `.jar` file, run it using: `PORT=80 java -jar server.jar` (choosing whatever port you wish).
 
 Note: Requires Java 8 and will likely not work with later versions due to the way the libgdx library works.
 
@@ -31,8 +34,12 @@ Here is the script used by [retrowars2.serwylo.com](http://retrowars2.serwylo.co
 
 ```
 #!/bin/bash
+@
+# Makes sure the retrowars process is always running by regularly running this script.
+# If it is already running, this script will do nothing.
+#
 # https://stackoverflow.com/a/911146/2391921
-# Makes sure the retrowars process is always running.
+#
 
 if ps ax | grep -v grep | grep retrowars-server.jar > /dev/null
 then
@@ -53,7 +60,8 @@ To do this, ensure you enable the `mod_proxy` and `mod_proxy_wstunnel` modules a
 <VirtualHost *:80>
 	ServerName retrowars2.serwylo.com
 
-	# The more specific path has to come first, or else all requests will be proxied via the HTTP proxy endpoint at "/*"
+	# The more specific path has to come first, or else all requests
+    # will be proxied via the HTTP proxy endpoint at "/*"
 	ProxyPass /ws ws://localhost:8080/ws
 	ProxyPass / http://localhost:8080/
 </VirtualHost>
