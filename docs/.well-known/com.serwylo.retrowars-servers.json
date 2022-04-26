@@ -1,6 +1,6 @@
 [
   {"hostname": "retrowars-latest.serwylo.com", "port": 80},
+  {"hostname": "retrowars.azlux.fr", "port": 80},
   {"hostname": "retrowars1.serwylo.com", "port": 80},
-  {"hostname": "retrowars2.serwylo.com", "port": 80},
-  {"hostname": "retrowars.azlux.fr", "port": 80}
+  {"hostname": "retrowars2.serwylo.com", "port": 80}
 ]
