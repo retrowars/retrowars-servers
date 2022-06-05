@@ -1,5 +1,7 @@
 # Public Super Retro Mega Wars Servers
 
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/pserwylo/retrowars)](https://hub.docker.com/r/pserwylo/retrowars)
+
 [Super Retro Mega Wars](https://github.com/retrowars/retrowars) is a free software multiplayer game.
 To support the multiplayer aspect, a server is required.
 To ensure that multiple people are able to offer servers for the community, we maintain a public
