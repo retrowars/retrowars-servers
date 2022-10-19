@@ -23,7 +23,7 @@ Retrowars is a community driven project. We will try to make sure that there are
 
 Obtaining a `.jar` file by either:
 * [Downloading the latest version from the release page of retrowars/retrowars](https://github.com/retrowars/retrowars/releases?q=%22server+release%3A%22&expanded=true), or
-* Build your own `.jar` file by cloning [retrowars/retrowars](https://github.com/retrowars/retrowars) then running `./gradlew :server:dist` from the root directory of that repository.
+* Build your own `.jar` file by cloning [retrowars/retrowars](https://github.com/retrowars/retrowars) then running `./gradlew :server:dist -PexcludeAndroid` from the root directory of that repository.
 
 Once you have obtained a `.jar` file, run it using: `PORT=80 java -jar server.jar` (choosing whatever port you wish).
 
@@ -69,6 +69,20 @@ To do this, ensure you enable the `mod_proxy` and `mod_proxy_wstunnel` modules a
 ```
 
 This is the approach used by [retrowars2.serwylo.com](http://retrowars2.serwylo.com) where traffic is proxied through Apache2 to the underlying Java process running as an unprivileged user on port 8080.
+
+#### Using Nginx
+Websocket proxy from [nginx docs](https://nginx.org/en/docs/http/websocket.html).
+
+```
+server {
+	server_name _;
+	
+	proxy_pass http://localhost:8080;
+    	proxy_http_version 1.1;
+    	proxy_set_header Upgrade $http_upgrade;
+    	proxy_set_header Connection "upgrade";
+}
+```
 
 #### Using Heroku
 
