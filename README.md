@@ -19,6 +19,40 @@ The [retrowars game](https://github.com/retrowars/retrowars) queries this JSON f
 
 Retrowars is a community driven project. We will try to make sure that there are servers run by the maintainers, but it would also be wonderful if others who enjoy the game and have the skills/resources were able to contribute a server to the pool of publicly available servers.
 
+#### Using Docker
+
+The latest server image can be pulled from [`pserwylo/retrowars` on Dockerhub](`https://hub.docker.com/r/pserwylo/retrowars`).
+
+Here is an example docker-compose file you could use:
+
+```
+version: '3.1'
+services:
+
+  your-retrowars-server.com:
+
+    image: pserwylo/retrowars:latest
+
+    expose:
+      - 80
+
+    environment:
+      - PORT=80
+
+      # Example configuration options:
+      - MAX_ROOMS=10
+      - ROOM_SIZE=4
+      - FINAL_SCORE_DURATION=7500
+
+    # volumes:
+
+      # If you want to customise the logging format:
+      # - ./logback.xml:/etc/retrowars/logback.xml
+
+      # If you want to retain logs:
+      # - retrowars-latest-logs:/var/log/retrowars/
+```
+
 #### Using the portable executable .jar file
 
 Obtaining a `.jar` file by either:
@@ -83,18 +117,6 @@ server {
     	proxy_set_header Connection "upgrade";
 }
 ```
-
-#### Using Heroku
-
-The server is designed so that it can be easily deployed to a Heroku instance. Indeed the [retrowars1.serwylo.com](http://retrowars1.serwylo.com/info) server is hosted on a free Heroku dyno (hence why it takes approx 20 seconds to respond if it hasn't been used in a while and has begun idling).
-
-To do so, you can:
- * Clone the main retrowars project at http://github.com/retrowars/retrowars
- * [Add a Heroku remote to the cloned repository](https://devcenter.heroku.com/articles/git#creating-a-heroku-remote)
- * [Deploy the app via git](https://devcenter.heroku.com/articles/git#deploying-code)
-
-This will result in Heroku building the app and running it for you. From there, you may wish to also:
- * [Add a custom domain](https://devcenter.heroku.com/articles/custom-domains)
 
 ### Maintaining this list
 
