@@ -1,0 +1,13 @@
+name: Build project
+
+on:
+  push:
+
+jobs:
+  check-syntax:
+    runs-on: stedolan/jq 
+    steps:
+    - name: Checkout project sources
+      uses: actions/checkout@v3
+    - name: Check syntax
+      run: jq < docs/.well-known/com.serwylo.retrowars-servers.json
