@@ -13,13 +13,11 @@ This in turn is then made available at:
 
 The [retrowars game](https://github.com/retrowars/retrowars) queries this JSON file in order to ascertain which servers are available for playing.
 
-## Contributing
+## Running a server
 
-### Running a public server
+Use the instructions here to either run your own personal server, or to run a public server available to all players of retrowars.
 
-Retrowars is a community driven project. We will try to make sure that there are servers run by the maintainers, but it would also be wonderful if others who enjoy the game and have the skills/resources were able to contribute a server to the pool of publicly available servers.
-
-#### Using Docker
+### Using Docker
 
 The latest server image can be pulled from [`pserwylo/retrowars` on Dockerhub](`https://hub.docker.com/r/pserwylo/retrowars`).
 
@@ -42,6 +40,7 @@ services:
       # Example configuration options:
       - MAX_ROOMS=10
       - ROOM_SIZE=4
+      - SUPPORTED_GAMES=tetris,asteroids
       - FINAL_SCORE_DURATION=7500
 
     # volumes:
@@ -53,7 +52,7 @@ services:
       # - retrowars-latest-logs:/var/log/retrowars/
 ```
 
-#### Using the portable executable .jar file
+### Using the portable executable .jar file
 
 Obtaining a `.jar` file by either:
 * [Downloading the latest version from the release page of retrowars/retrowars](https://github.com/retrowars/retrowars/releases?q=%22server+release%3A%22&expanded=true), or
@@ -85,7 +84,7 @@ fi
 exit
 ```
 
-#### Using an existing Apache2 server and adding an additional virtual host
+### Using an existing Apache2 server and adding an additional virtual host
 
 If the server you are using already has Apache2 configured with other virtual hosts, you probably want to proxy traffic from Apache2 to the retrowars server process. 
 To do this, ensure you enable the `mod_proxy` and `mod_proxy_wstunnel` modules and add the following virtual host config ([based on the official docs](http://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html)):
@@ -104,7 +103,7 @@ To do this, ensure you enable the `mod_proxy` and `mod_proxy_wstunnel` modules a
 
 This is the approach used by [retrowars2.serwylo.com](http://retrowars2.serwylo.com) where traffic is proxied through Apache2 to the underlying Java process running as an unprivileged user on port 8080.
 
-#### Using Nginx
+### Using Nginx
 Websocket proxy from [nginx docs](https://nginx.org/en/docs/http/websocket.html).
 
 ```
@@ -118,12 +117,18 @@ server {
 }
 ```
 
-### Maintaining this list
+## Contribute a public server
 
-#### Adding servers
+Retrowars is a community driven project. We will try to make sure that there are servers run by the maintainers, but it would also be wonderful if others who enjoy the game and have the skills/resources were able to contribute a server to the pool of publicly available servers.
+
+To do so, follow the instructions above to [run a server](#running-a-server), then [add the server to the list of public server](#adding-servers).
+
+## Maintaining this list
+
+### Adding servers
 If you are the maintainer of a public retrowars server, or if you want to help the maintainer be added to the official list of publicly available servers, you can file a pull request to this repository to update the list of servers.
 
-#### Removing servers
+### Removing servers
 If a server becomes defunct, the game will quietly ignore it (after trying to reach it and failing).
 This means that the players wont see defunct servers, other than a status message saying it tried to connect to the server (a message which will disappear after failing to connect).
 
