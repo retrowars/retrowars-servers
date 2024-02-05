@@ -1,9 +1,9 @@
 [
   {"hostname": "retrowars-latest.serwylo.com", "port": 80},
+  {"hostname": "rwars-tetris.ggorg.xyz", "port": 443},
+  {"hostname": "rwars-sn-br-si.ggorg.xyz", "port": 443},
   {"hostname": "retrowars.azlux.fr", "port": 80},
-  {"hostname": "retrowars1.serwylo.com", "port": 80},
   {"hostname": "rwr.nekoweb.my.id", "port": 80},
   {"hostname": "retrowars.pratl.org", "port": 8080},
-  {"hostname": "rwars-tetris.ggorg.xyz", "port": 443},
-  {"hostname": "rwars-sn-br-si.ggorg.xyz", "port": 443}
+  {"hostname": "retrowars1.serwylo.com", "port": 80}
 ]
